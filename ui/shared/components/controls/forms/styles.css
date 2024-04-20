@@ -1,0 +1,114 @@
+.base-form {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin: unset auto;
+  width: 100%;
+  padding: 24px;
+}
+
+.base-form>h1 {
+  padding: 0 0 40px;
+  font-family: var(--font-opensans);
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 120%;
+  text-align: center;
+}
+
+.base-form>main {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  align-items: center;
+}
+
+
+.base-loading-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 297px;
+  animation-name: easyShowUp;
+  animation-duration: .4s;
+}
+
+.base-loading-container>span {
+  font-size: 18px;
+  font-weight: 500;
+  margin-top: 13px;
+} 
+
+
+.base-spinner {
+
+  width: 48px;
+  height: 48px;
+
+  border: 5px solid rgba(255, 255, 255, 0.843);
+    
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+
+}
+
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+/* WARNING */
+/* 
+.base-warning-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 48px;
+  animation-name: easyShowUp;
+  animation-duration: .2s;
+  color: black;
+  margin-bottom: 13px;
+  margin-top: 13px;
+}
+
+
+.base-warning-container .tryAgain {
+  font-size: 16px;
+  font-weight: bold;
+}
+ */
+
+@media (max-width: 768px) {
+
+  .base-form {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin: unset auto;
+    width: 100%;
+    padding: 10px;
+  }
+  .base-form>h1 {
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 120%;
+  }
+}
+
+/*  .base-warning-container {
+  padding: 22px 42px;
+} */

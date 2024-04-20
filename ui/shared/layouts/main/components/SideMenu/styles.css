@@ -1,0 +1,32 @@
+.main-side-menu{
+    position: relative;
+    height: 100%;
+    width: 64px;
+    transition: all .25s;
+}
+
+.main-side-menu.expand {
+    width: 280px;
+}
+
+.main-side-menu > header {
+    height: 64px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background: var( --primary-color);
+}
+
+.main-side-menu.expand > header {
+    width: 280px;
+    padding: 10px;
+    justify-content: flex-end;
+}
+
+.main-aside-toggle-button{
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    cursor: pointer;
+}

@@ -1,0 +1,52 @@
+.bread-crumbs-container {
+
+    display: grid;
+    grid-template-columns: auto 1fr;
+    width: 100%;
+    height: fit-content;
+
+    color: white;
+    overflow: hidden;
+    height: 32px;
+
+    & > nav {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        overflow-x: auto;
+        overflow-y: hidden;
+        max-width: 100%;
+        width: fit-content;
+    }
+}
+
+.bread-crums-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 100%;
+    padding: 0 1rem;
+    cursor: pointer;
+    color: white;
+        
+    &>span {
+        font-size: 12px;
+        line-height: 1em;
+        white-space: nowrap;
+    }
+    
+    &:nth-child(1)>span {
+        font-size: 16px !important;
+    }
+} 
+
+
+.bread-crumbs-divider{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: fit-content;
+    font-size: 32px;
+    margin-top: -8px;
+}

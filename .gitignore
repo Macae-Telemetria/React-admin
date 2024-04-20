@@ -1,0 +1,13 @@
+.idea/
+.vscode/
+node_modules/
+build/
+tmp/
+temp/
+coverage/
+config/.env
+config/.env.test
+config/.env.stage
+.temp.json
+temp/
+output/

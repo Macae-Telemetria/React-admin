@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "types": ["node"],
+    "target": "es5",
+    "module": "esnext",
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "jsx": "react",
+    "baseUrl": ".",
+    "paths": {
+      "@ui/*": ["./ui/*"]
+    },
+    "allowJs": true,
+    "resolveJsonModule": true,
+    "typeRoots": [
+      "node_modules/@types",
+      "node_modules/@types/**/index.d.ts",
+      "/**/*.d.ts"
+    ]
+  },
+  "include": ["ui", "/**/*.d.ts"],
+  "exclude": ["node_modules"]
+}

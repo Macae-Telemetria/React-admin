@@ -1,0 +1,43 @@
+:root {
+    --background-color: #f4f0ee;
+    --primary-font-color: #071d4d;
+    --primary-color: #0b0430;
+    --secondary-color: #da7f2f;
+}
+
+/* .dark-theme {
+    --background-color: rgb(11, 13, 36);
+    --primary-font-color: rgb(255, 255, 255);
+    --divider-color: #888;
+    --decorators-color: white;
+} */
+
+body {
+    min-height: 100%;
+    max-width: 100%;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-family: 'Montserrat', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+
+    ::-webkit-scrollbar {
+        width: 5px;
+        height: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: #e9e9e9;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+        background: #989ba1;
+        border-radius: 12px;
+        -webkit-box-shadow: inset 0 0 6px rgba(2, 59, 166, 0.3);
+    }
+}
+
