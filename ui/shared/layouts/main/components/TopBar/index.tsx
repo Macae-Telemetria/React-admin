@@ -1,30 +1,24 @@
 import React from "react";
 import "./styles.css";
-import { OrganizationInfo, UserInfo } from "@ui/shared/domain/common/object-values/user-info";
+import { UserInfo } from "@ui/shared/domain/common/object-values/user-info";
+import UserOptions from "@ui/shared/layouts/components/UserOptions";
+import { useAuthentication } from "@ui/apps/admin/contexts/Authentication";
 
 export type CommonHeaderProps = {
   logoUrl?: string;
-  organizationInfo?: OrganizationInfo;
   userInfo?: UserInfo;
 };
 
 export const TopBar = (props: CommonHeaderProps) => {
 
-  const { userInfo, organizationInfo } = props;
+  const { user } = useAuthentication();
   // props
   return (
-    <div className={`main-top-bar`} style={{backgroundColor: organizationInfo?.primaryColor}}>
+    <div className={`main-top-bar`}>
       <div className="main-top-bar-container">
-        <section className="organization-logo">
-          <img src={organizationInfo?.logo ?? null} />
-        </section>
+        <section className="organization-logo"></section>
         <section>
-          {userInfo?.username || "Carregando..."}
-          {userInfo && (
-            <>
-              <button> Sair </button>
-            </>
-          )}
+          <UserOptions userInfo={{ name: user?.name || "" }} />
         </section>
       </div>
     </div>

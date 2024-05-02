@@ -1,0 +1,48 @@
+.file-input {
+  position: relative;
+  width: 100%;
+  height: 51px;
+  display: flex;
+  overflow: hidden;
+  background-color: #fff;
+  padding: 8px;
+  border: 1px solid #dee2e6;
+  border-radius: 0.25rem;
+}
+
+
+.file-input>label {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 8px;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding-left: 5.4rem;
+  box-shadow: 0 3px 2px rgb(233 236 239 / 5%);
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1em;
+  color: #8898aa;
+  cursor: pointer;
+}
+
+.file-input>button {
+  display: flex;
+  align-items: center;
+  vertical-align: middle;
+  width: fit-content;
+  padding: 0 0.5rem;
+  height: 100%;
+  break-after: none;
+  background-color: var(--primary-color);
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #fff;
+  z-index: 1;
+  border: none;
+}

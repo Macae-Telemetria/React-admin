@@ -18,7 +18,7 @@ export const MainLayout = (props: MainLayoutProps) => {
     <>
       <div className="main-layout">
         <header>
-          <TopBar organizationInfo={organizationInfo} userInfo={userInfo} />
+          <TopBar />
         </header>
 
        {/*  <aside className={`${showMenu ? "show-aside-mobile" : ""}`}>
@@ -30,7 +30,7 @@ export const MainLayout = (props: MainLayoutProps) => {
 
         <main> {children}</main>
 
-        <footer> Projeto X</footer>
+        <footer> ADMIN GPICM </footer>
       </div>
     </>
   );

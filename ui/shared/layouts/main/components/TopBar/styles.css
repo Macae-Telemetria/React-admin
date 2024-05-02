@@ -4,7 +4,7 @@
     width: 100%;
     height: 64px;
     overflow: hidden;
-    background: var( --primary-color);
+    background: var(--primary-color);
 }
 
 .main-top-bar-container{
@@ -13,7 +13,11 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr;
-    padding: 0 1rem;
+    max-width: 1024px;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 0 2rem;
+    z-index: 1;
 }
 
 .main-top-bar-container > section {

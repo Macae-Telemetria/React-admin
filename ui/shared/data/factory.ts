@@ -2,6 +2,7 @@ import { BrowserLocalStorage } from "../infra/repositories/browser-local-storage
 import { AxiosHttpClient } from "../infra/services/axios-http-client";
 import { HttpClient } from "../infra/services/http-client";
 import AuthenticationService from "./services/apis/authentication/authentication-service";
+import SoftwareReleaseService from "./services/apis/software-release/authentication-service";
 
 const apiUrl = "https://telemetria-macae.online/api/v1" 
 
@@ -17,6 +18,11 @@ const httpClient: HttpClient = new AxiosHttpClient(
 
 export function MakeAuthenticationServices(): AuthenticationService {
   const service = new AuthenticationService(httpClient);
+  return service;
+}
+
+export function MakeSoftwareReleaseServiceService(): SoftwareReleaseService {
+  const service = new SoftwareReleaseService(httpClient);
   return service;
 }
 

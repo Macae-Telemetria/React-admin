@@ -1,6 +1,8 @@
 import Profile from "./Profile";
 import Dashboard from "./Dashboard";
 import Login from "./Login";
+import OtaPage from "./Ota/OtaHome";
+import OtaCreateReleasePage from "./Ota/OtaCreateRelease";
 
 export type PageManifest = {
   path: string;
@@ -14,6 +16,14 @@ export const PAGES_MANIFEST: Record<string, PageManifest> = {
   Dashboard: {
     path: "/dashboard",
     Element: Dashboard,
+  },
+  Ota: {
+    path: "/ota",
+    Element: OtaPage,
+  },
+  OtaCreateRelease: {
+    path: "/ota/novo",
+    Element: OtaCreateReleasePage,
   },
   Profile: {
     path: "/minha-organizacao",

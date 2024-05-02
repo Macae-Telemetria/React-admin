@@ -41,9 +41,14 @@ const Router = (props) => {
                 <Route index element={<PAGES_MANIFEST.Dashboard.Element />} />
               </Route>
 
-              <Route path={PAGES_MANIFEST.Profile.path}>
-                <Route index element={<PAGES_MANIFEST.Profile.Element />} />
+              <Route path={PAGES_MANIFEST.Ota.path}>
+                <Route index element={<PAGES_MANIFEST.Ota.Element />} />
               </Route>
+
+              <Route path={PAGES_MANIFEST.OtaCreateRelease.path}>
+                <Route index element={<PAGES_MANIFEST.OtaCreateRelease.Element />} />
+              </Route>
+
 
               <Route
                 path="/*"

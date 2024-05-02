@@ -1,16 +1,17 @@
-import React, { useCallback } from "react";
-import "./styles.css";
+import React, { useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
+import "./styles.css"
 
 export interface BreadCrumbsProps {
-  breadcrumbs?: Array<{ value: string; label: string; icon?: any }>;
-  showBackButton?: boolean;
-  onClick: (path: string) => void;
+  breadcrumbs?: Array<{ value: string, label: string, icon?: any}>
+  showBackButton?: boolean
 }
 
-export const BreadCrumbs: React.FunctionComponent<BreadCrumbsProps> = (
-  props: BreadCrumbsProps
-) => {
-  const { breadcrumbs, showBackButton = true, onClick } = props;
+export const BreadCrumbs: React.FunctionComponent<BreadCrumbsProps> = (props) => {
+
+  const { breadcrumbs, showBackButton = true} = props;
+
+  const navigate = useNavigate();
 
   const handleBack = () => {
     const result =
@@ -18,11 +19,11 @@ export const BreadCrumbs: React.FunctionComponent<BreadCrumbsProps> = (
         ? breadcrumbs[breadcrumbs.length - 1].value
         : breadcrumbs[breadcrumbs.length - 2].value;
 
-    onClick(result);
+    navigate(result);
   };
 
   const handleLink = (value) => {
-    onClick(`${value}`);
+    navigate(`${value}`);
   };
 
   const renderBreadcrumbs = useCallback(() => {
@@ -37,9 +38,7 @@ export const BreadCrumbs: React.FunctionComponent<BreadCrumbsProps> = (
               {Icon && <Icon />}
             </span>
           </div>
-          {i < breadcrumbs.length - 1 && (
-            <span className="bread-crumbs-divider"> &#8250; </span>
-          )}
+          {i < breadcrumbs.length - 1 && <span className="bread-crumbs-divider"> &#8250; </span>}
         </React.Fragment>
       );
     });
@@ -47,7 +46,7 @@ export const BreadCrumbs: React.FunctionComponent<BreadCrumbsProps> = (
 
   return (
     <div className="bread-crumbs-container">
-      {/*    {showBackButton && (
+   {/*    {showBackButton && (
         <BackButton onClick={handleBack}>
           <img src={LeftArrowIcon} />
         </BackButton>

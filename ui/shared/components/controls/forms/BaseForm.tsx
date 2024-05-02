@@ -34,7 +34,7 @@ const BaseForm: React.FunctionComponent<BaseFormProps> = (props) => {
         renderLoading
       ) : (
         <>
-          <h1>{title}</h1>
+          <h2>{title}</h2>
           <main>{children}</main>
         </>
       )}

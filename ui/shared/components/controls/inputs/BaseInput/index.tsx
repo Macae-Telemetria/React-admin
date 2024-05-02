@@ -8,7 +8,7 @@ export interface BaseInputProps {
   errorMessage?: string;
   isDisabled?: boolean;
   placeHolder?: string;
-  inputRef?: React.Ref<HTMLInputElement>;
+  inputRef?: React.Ref<HTMLInputElement | HTMLTextAreaElement>;
   onChange?: (name: string, e: string) => void;
   onBlur?: (e: any) => void;
   mask?: (e: unknown) => void;
@@ -25,7 +25,7 @@ const InputWrapper = (props: {
     <div
       className={`base-input-container ${hasError ? "base-input-warning" : ""}`}
     >
-      {label && <span> {label}</span>}
+      {label && <span className="input-main-label"> {label}</span>}
       {children}
       {errorMessage?.length > 0 && (
         <label className={"base-input-error-label"}>

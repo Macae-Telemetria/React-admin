@@ -1,43 +1,21 @@
 .common-header{
     position: relative;
     color: #060438;
-    margin-bottom: -40px;
-    overflow: hidden;
-    background-color: rgba(4, 26, 61, 0.15);
-   
-    z-index: 0;
     width: 100%;
-    height: 108px;
-    overflow: hidden;
-    padding: 16px 0;
-
-    background: #1488CC;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to left, #2B32B2, #1488CC);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to left, #2B32B2, #1488CC); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-
+    height: 58px;
 }
-
-.common-header.dark-mode{
-    background: rgb(3, 33, 81);
-}
-
-.sky-background{
-    position: absolute;
-    top: 0;
-    left: 0;
-    object-fit: contain;
-    width: 100%;
-    height: auto;
-    z-index: -2;
- }
 
 .commmon-header-content{
     width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: flex-end;
+    max-width: 1640px;
+    margin-right: auto;
+    margin-left: auto;
+
 }
 
 .commmon-header-content > section {
@@ -45,12 +23,27 @@
     flex-direction: row;
     align-items: center;
     justify-content: flex-end;
-    gap: 16px;
 }
 
 .commmon-header-content > section:nth-child(1) {
     width: 100%;
     height: 100%;
+    justify-content: flex-start;
+    column-gap: 16px;
+
+}
+
+.page-headline{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 2px;
+}
+
+.page-title{
+    font-size: 18px;
+    font-weight: 500;
+    color: #333;
 }
 
 .commmon-header-content > section > button{
@@ -62,10 +55,13 @@
     border-radius: 50%;
 }
 
-/* .commmon-header-content > section > button:hover{
-   background-color: rgba(250, 250, 250, 0.22);
+.common-header-icon{
+    border-right: solid 1px #ddd;
+    border-left: none;
+    height: 46px;
+    width: calc(46px + 16px);
+    padding-right: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
- */
-
-
-

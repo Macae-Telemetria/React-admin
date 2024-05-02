@@ -8,18 +8,25 @@
   gap: 4px;
 }
 
+.base-input-container > .input-main-label {
+  font-family: var(--font-opensans);
+  font-size: 14px;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 150%;
+}
+
 .base-input-container.base-input-warning > input {
   outline: 1px solid red !important;
   color: red !important;
 }
-
 
 .base-input-error-label {
   position: absolute;
   left: 0;
   top: 108%;
   font-family: var(--font-opensans);
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 400;
   font-style: normal;
   line-height: 150%;

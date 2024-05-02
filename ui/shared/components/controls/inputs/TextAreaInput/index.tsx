@@ -3,12 +3,12 @@ import React, { InputHTMLAttributes, ReactNode, useCallback, useMemo, useState }
 import './styles.css';
 import InputWrapper, { BaseInputProps } from '../BaseInput';
 
-export interface TextInputProps extends BaseInputProps {
-  override?: InputHTMLAttributes<HTMLInputElement>;
+export interface TextAreaInputProps extends BaseInputProps {
+  override?: InputHTMLAttributes<HTMLTextAreaElement>;
 }
 
-const TextInput: React.FunctionComponent<TextInputProps> = (
-  props: TextInputProps
+const TextAreaInput: React.FunctionComponent<TextAreaInputProps> = (
+  props: TextAreaInputProps
 ) => {
   const {
     name,
@@ -35,18 +35,18 @@ const TextInput: React.FunctionComponent<TextInputProps> = (
   };
 
   return (
-    <InputWrapper
+   <InputWrapper
       hasError={(props.errorMessage || "").length > 0}
       errorMessage={props.errorMessage}
       label={props.label}
-    >
-      <input
-        className="base-text-input"
+    > 
+      <textarea
+        className="text-area-input"
         name={name}
-        type={"text"}
         autoComplete="new-password"
         placeholder={placeHolder}
         value={value}
+        rows={6}
         ref={inputRef as any}
         onChange={handleChange}
         onBlur={onBlur}
@@ -54,8 +54,8 @@ const TextInput: React.FunctionComponent<TextInputProps> = (
         disabled={isDisabled}
         {...override}
       />
-    </InputWrapper>
+   </InputWrapper> 
   );
 };
 
-export default TextInput;
+export default TextAreaInput;
