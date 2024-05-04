@@ -5,10 +5,10 @@
   "license": "MIT",
   "scripts": {
     "dev": "webpack-dev-server --config ./.webpack/webpack.dev.js",
-    "build": "yarn build:server && yarn build:ui",
-    "build:ui": "rm -rf ./output && webpack --config ./.webpack/webpack.prod.js",
+    "build": "rm -rf ./output && yarn build:server && yarn build:ui",
+    "build:ui": "webpack --config ./.webpack/webpack.prod.js",
     "build:server": "webpack --config ./.webpack/webpack.server.js",
-    "start": "node ./output/server.js   "
+    "start": "node ./output/server.js"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.4",
