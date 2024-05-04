@@ -2,6 +2,7 @@ import PageScaffold from "@ui/shared/layouts/PageScaffold";
 import React from "react";
 import { Link } from "react-router-dom";
 import "./styles.css"
+import { PAGES_MANIFEST } from "..";
 export const DashboardPage = () => {
   return (
     <PageScaffold
@@ -10,15 +11,13 @@ export const DashboardPage = () => {
     >
       <div className="dashboard-grid">
         <section>
-          <Link to={"/ota"} > Ota </Link>
+          <Link to={PAGES_MANIFEST.SoftwareReleases.path}>
+            Software releases
+          </Link>
         </section>
 
         <section>
-          <Link to={"/usuarios"} > Usuarios </Link>
-        </section>
-
-        <section>
-          < Link to={"/organizacoes"} > Organizações </Link>
+          <Link to={PAGES_MANIFEST.Ota.path}> OTA Update </Link>
         </section>
       </div>
     </PageScaffold>

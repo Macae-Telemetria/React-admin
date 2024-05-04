@@ -1,8 +1,10 @@
 import Profile from "./Profile";
 import Dashboard from "./Dashboard";
 import Login from "./Login";
-import OtaPage from "./Ota/OtaHome";
-import OtaCreateReleasePage from "./Ota/OtaCreateRelease";
+import SoftwareReleaseHomePage from "./SoftwareRelease/Home";
+import OtaCreateReleasePage from "./SoftwareRelease/CreateSoftwareRelease";
+import OtaPage from "./OTA/Home";
+import PushOtaUpdate from "./OTA/PushOtaUpdate";
 
 export type PageManifest = {
   path: string;
@@ -17,13 +19,21 @@ export const PAGES_MANIFEST: Record<string, PageManifest> = {
     path: "/dashboard",
     Element: Dashboard,
   },
+  SoftwareReleases: {
+    path: "/software-releases",
+    Element: SoftwareReleaseHomePage,
+  },
+  CreateSoftwareRelease: {
+    path: "/software-releases/publicar",
+    Element: OtaCreateReleasePage,
+  },
   Ota: {
     path: "/ota",
     Element: OtaPage,
   },
-  OtaCreateRelease: {
-    path: "/ota/novo",
-    Element: OtaCreateReleasePage,
+  OtaUpdate: {
+    path: "/ota/push",
+    Element: PushOtaUpdate,
   },
   Profile: {
     path: "/minha-organizacao",

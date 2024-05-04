@@ -5,6 +5,7 @@ import InputWrapper, { BaseInputProps } from '../BaseInput';
 
 export interface TextInputProps extends BaseInputProps {
   override?: InputHTMLAttributes<HTMLInputElement>;
+  type?: string;
 }
 
 const TextInput: React.FunctionComponent<TextInputProps> = (
@@ -19,7 +20,8 @@ const TextInput: React.FunctionComponent<TextInputProps> = (
     value,
     placeHolder,
     isDisabled,
-    override
+    override,
+    type="text"
   } = props;
 
   const handleChange = (e: any) => {
@@ -43,7 +45,7 @@ const TextInput: React.FunctionComponent<TextInputProps> = (
       <input
         className="base-text-input"
         name={name}
-        type={"text"}
+        type={type}
         autoComplete="new-password"
         placeholder={placeHolder}
         value={value}

@@ -1,6 +1,7 @@
 
 import React, { useMemo } from 'react';
 import './styles.css';
+import LoadingOverflow from '@ui/shared/layouts/components/LoadingOverflow';
 
 export interface BaseFormProps {
   onSubmit: (e: unknown) => unknown;
@@ -31,7 +32,7 @@ const BaseForm: React.FunctionComponent<BaseFormProps> = (props) => {
       style={{ ...(customStyle ?? {}) }}
     >
       {isLoading ? (
-        renderLoading
+        <LoadingOverflow />
       ) : (
         <>
           <h2>{title}</h2>

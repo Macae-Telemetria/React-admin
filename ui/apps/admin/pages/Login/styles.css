@@ -40,7 +40,7 @@
     justify-content: center;
     gap: .6rem;
     z-index: 1;
-    background-color: rgba(0, 26, 119, 1);
+    background-color: var(--primary-color);
     color: white;
     font-size: 32px;
     font-weight: 600;

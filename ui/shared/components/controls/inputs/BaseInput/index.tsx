@@ -4,7 +4,7 @@ import "./styles.css";
 export interface BaseInputProps {
   name?: string;
   value?: string;
-  label?: String;
+  label?: string;
   errorMessage?: string;
   isDisabled?: boolean;
   placeHolder?: string;
@@ -18,7 +18,7 @@ const InputWrapper = (props: {
   children: React.ReactNode;
   hasError?: boolean;
   errorMessage?: string;
-  label?:String;
+  label?: string;
 }) => {
   const { hasError, children, errorMessage, label } = props;
   return (

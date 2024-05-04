@@ -1,5 +1,5 @@
 import { HttpClient } from "@ui/shared/infra/services/http-client";
-import { SoftwareReleaseServiceTypes } from "./authentication-types";
+import { SoftwareReleaseServiceTypes } from "./types";
 import { Form } from "react-router-dom";
 
 export class SoftwareReleaseService {

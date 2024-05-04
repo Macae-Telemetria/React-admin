@@ -1,0 +1,11 @@
+.combo-box-component{
+    position: relative;
+    height: 48px;
+    width: 100%;
+}
+
+
+.combo-box-component.combo-box-warning{
+    outline: 1px solid  red!important;
+    color: red;
+}

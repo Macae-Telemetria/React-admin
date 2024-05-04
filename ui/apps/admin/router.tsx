@@ -41,14 +41,36 @@ const Router = (props) => {
                 <Route index element={<PAGES_MANIFEST.Dashboard.Element />} />
               </Route>
 
+              <Route path={PAGES_MANIFEST.SoftwareReleases.path}>
+                <Route
+                  index
+                  element={<PAGES_MANIFEST.SoftwareReleases.Element />}
+                />
+              </Route>
+
+              <Route path={PAGES_MANIFEST.CreateSoftwareRelease.path}>
+                <Route
+                  index
+                  element={<PAGES_MANIFEST.CreateSoftwareRelease.Element />}
+                />
+              </Route>
+
+              {/* OTA */}
               <Route path={PAGES_MANIFEST.Ota.path}>
-                <Route index element={<PAGES_MANIFEST.Ota.Element />} />
+                <Route
+                  index
+                  element={<PAGES_MANIFEST.Ota.Element />}
+                />
               </Route>
 
-              <Route path={PAGES_MANIFEST.OtaCreateRelease.path}>
-                <Route index element={<PAGES_MANIFEST.OtaCreateRelease.Element />} />
+              <Route path={PAGES_MANIFEST.OtaUpdate.path}>
+                <Route
+                  index
+                  element={<PAGES_MANIFEST.OtaUpdate.Element />}
+                />
               </Route>
 
+              {/*  */}
 
               <Route
                 path="/*"

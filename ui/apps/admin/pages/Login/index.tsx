@@ -49,7 +49,7 @@ export const Login = () => {
         <section>
           <div className="login-organization-info">
             <div className="organization-logo-container"></div>
-            <span> </span>
+            <span> CPICM ADMIN </span>
           </div>
         </section>
         <section>
@@ -81,6 +81,7 @@ export const Login = () => {
 
               <TextInput
                 label="Senha"
+                type="password"
                 errorMessage={formState.errors?.password?.message || ""}
                 override={{ ...register("password") }}
               />
