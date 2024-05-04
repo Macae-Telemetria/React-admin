@@ -18,11 +18,18 @@ export function SoftwareReleaseIntegrationTable({
 }: SoftwareReleaseIntegrationTableProps) {
   const columns = [
     {
+      key: "stationId",
+      width: 100,
+      render: (_: any, item) => (
+        <>{item.stationName || item.stationId || ""}</>
+      ),
+    },
+
+    {
       key: "version",
-      width: 64,
+      width: 48,
       render: (_: any, item) => (
         <Flex justify="center">
-           <Tag color="default">ID: {item.stationId}</Tag>
           <Tag color="success">v{item.version}</Tag>
         </Flex>
       ),
@@ -41,20 +48,20 @@ export function SoftwareReleaseIntegrationTable({
       key: "action",
       render: (_: any, item) => (
         <>
-            <Button
-              danger
-              type="default"
-              style={{
-                width: '32',
-                height: 36,
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-              disabled={item.status >= SoftwareReleaseInterationStatus.CANCELLED}
-              onClick={() => onActionPress(item)}
-              icon={<CloseCircleFilled />}
-            />
+          <Button
+            danger
+            type="default"
+            style={{
+              width: "32",
+              height: 36,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+            disabled={item.status >= SoftwareReleaseInterationStatus.CANCELLED}
+            onClick={() => onActionPress(item)}
+            icon={<CloseCircleFilled />}
+          />
         </>
       ),
       width: 32,

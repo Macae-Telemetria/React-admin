@@ -17,6 +17,8 @@ export class Station {
 
   organizationId?: string;
 
+  softwareVersion?: string;
+
   imageUrl?: string;
 
   imagePreviewUrl?: string;

@@ -20,6 +20,10 @@ export class SoftwareReleaseIntegration {
 
   message: string;
 
+  // Virtual
+
+  stationName?: string;
+
   constructor(props: SoftwareReleaseIntegration) {
     Object.assign(this, props);
   }

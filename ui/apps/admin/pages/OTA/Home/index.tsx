@@ -1,16 +1,46 @@
 import PageScaffold from "@ui/shared/layouts/PageScaffold";
 import React from "react";
 import { SoftwareReleaseIntegrationTable } from "../components/software-release-integration-table";
-import { Button, Flex } from "antd";
+import { Button, Flex, Tabs, TabsProps } from "antd";
 import { Link } from "react-router-dom";
 import { PAGES_MANIFEST } from "../..";
 import LoadingOverflow from "@ui/shared/layouts/components/LoadingOverflow";
 import { useLoadSoftwareReleaseIntegrations } from "@ui/shared/hooks/useLoadSoftwareReleaseIntegrations";
+import { StationsTable } from "../components/stations-table";
 
 export const OtaPage = () => {
   // -- States
-  const { softwareReleaseIntegrations, isLoading, handleCancelOtaUpdate } =
-    useLoadSoftwareReleaseIntegrations({});
+  const {
+    softwareReleaseIntegrations,
+    isLoading,
+    handleCancelOtaUpdate,
+    stations,
+  } = useLoadSoftwareReleaseIntegrations({});
+
+    const items: TabsProps["items"] = [
+      
+      {
+        key: "1",
+        label: "Integrações",
+        children: (
+          <SoftwareReleaseIntegrationTable
+            list={softwareReleaseIntegrations}
+            onActionPress={(item) => handleCancelOtaUpdate(item.id)}
+          />
+        ),
+      },
+
+      {
+        key: "2",
+        label: "Estações",
+        children: (
+          <StationsTable
+            list={stations}
+            onActionPress={(item) => null}
+          />
+        ),
+      },
+    ];
 
   return (
     <PageScaffold
@@ -37,9 +67,12 @@ export const OtaPage = () => {
       {isLoading ? (
         <LoadingOverflow />
       ) : (
-        <SoftwareReleaseIntegrationTable
-          list={softwareReleaseIntegrations}
-          onActionPress={(item) => handleCancelOtaUpdate(item.id)}
+
+        <Tabs
+          defaultActiveKey="1"
+          type="card"
+          size={'small'}
+          items={items}
         />
       )}
     </PageScaffold>
