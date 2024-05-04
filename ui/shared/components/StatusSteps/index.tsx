@@ -41,9 +41,11 @@ export const StatusSteps = (props: {
             <LoadingOutlined />
           ),
           status:
-            status == SoftwareReleaseInterationStatus.IN_PROGRESS
+            status > SoftwareReleaseInterationStatus.IN_PROGRESS
+              ? "finish"
+              : status == SoftwareReleaseInterationStatus.IN_PROGRESS
               ? "process"
-              : "finish",
+              : "wait",
         },
         {
           title:
