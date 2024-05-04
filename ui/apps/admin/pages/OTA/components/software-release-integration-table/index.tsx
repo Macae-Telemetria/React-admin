@@ -1,5 +1,7 @@
 import React from "react";
-import { Button, Flex, Table, Tag } from "antd";
+import { Button, Flex, Table, Tag, Typography } from "antd";
+const { Text } = Typography;
+
 import {
   SoftwareReleaseIntegration,
   SoftwareReleaseInterationStatus,
@@ -21,7 +23,9 @@ export function SoftwareReleaseIntegrationTable({
       key: "stationId",
       width: 100,
       render: (_: any, item) => (
-        <>{item.stationName || item.stationId || ""}</>
+        <Text ellipsis style={{ margin: 0 }}>
+          {item.stationName || item.stationId || ""}
+        </Text>
       ),
     },
 

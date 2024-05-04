@@ -7,11 +7,9 @@
 }
 
 .dashboard-grid > section{
-    width: calc(100% - 20px);
-    min-height: 140px;
+    width: calc(100%);
     border-radius: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgb(219, 219, 219);
 }

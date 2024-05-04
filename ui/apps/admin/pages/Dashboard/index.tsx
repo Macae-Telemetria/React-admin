@@ -1,8 +1,9 @@
 import PageScaffold from "@ui/shared/layouts/PageScaffold";
 import React from "react";
 import { Link } from "react-router-dom";
-import "./styles.css"
+import "./styles.css";
 import { PAGES_MANIFEST } from "..";
+import { Card } from "antd";
 export const DashboardPage = () => {
   return (
     <PageScaffold
@@ -11,13 +12,17 @@ export const DashboardPage = () => {
     >
       <div className="dashboard-grid">
         <section>
-          <Link to={PAGES_MANIFEST.SoftwareReleases.path}>
-            Software releases
-          </Link>
+          <Card style={{ width: `100%` }}>
+            <Link to={PAGES_MANIFEST.SoftwareReleases.path}>
+              Software releases
+            </Link>
+          </Card>
         </section>
 
         <section>
-          <Link to={PAGES_MANIFEST.Ota.path}> OTA Update </Link>
+          <Card style={{ width: `100%` }}>
+            <Link to={PAGES_MANIFEST.Ota.path}> OTA Update </Link>
+          </Card>
         </section>
       </div>
     </PageScaffold>
