@@ -3,12 +3,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./styles.css";
 import { PAGES_MANIFEST } from "..";
-import { Card, Flex, Table, Tag, Typography } from "antd";
+import { Card, Flex, Typography } from "antd";
 const { Text } = Typography;
 
 import {
-  UserOutlined,
-  TeamOutlined,
   UploadOutlined,
   CloudUploadOutlined,
 } from "@ant-design/icons";

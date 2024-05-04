@@ -9,7 +9,6 @@ import LoadingOverflow from "@ui/shared/layouts/components/LoadingOverflow";
 import { PAGES_MANIFEST } from "../..";
 import { usePushOtaUpdateController } from "./controller";
 import ComboBox from "@ui/shared/components/controls/inputs/ComboBox";
-import StationService from "@ui/shared/data/services/apis/station/service";
 export const PushOtaUpdate = () => {
   const {
     handleSubmit,

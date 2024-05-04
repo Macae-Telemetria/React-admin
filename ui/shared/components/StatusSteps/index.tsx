@@ -14,14 +14,29 @@ export const StatusSteps = (props: {
   ].includes(status);
 
   const hasSucceded = status == SoftwareReleaseInterationStatus.SUCCESS;
-
+  const wasCanceled = status == SoftwareReleaseInterationStatus.CANCELLED;
   return (
     <Steps
       size={"small"}
-      
       items={[
         {
-          title: "Baixando",
+          title:
+            status > SoftwareReleaseInterationStatus.PENDING
+              ? "Recebido"
+              : "A receber",
+          icon: status == SoftwareReleaseInterationStatus.PENDING && (
+            <LoadingOutlined />
+          ),
+          status:
+            status == SoftwareReleaseInterationStatus.PENDING
+              ? "process"
+              : "finish",
+        },
+        {
+          title:
+            status > SoftwareReleaseInterationStatus.IN_PROGRESS
+              ? "Baixado"
+              : "Baixando",
           icon: status == SoftwareReleaseInterationStatus.IN_PROGRESS && (
             <LoadingOutlined />
           ),
@@ -31,7 +46,10 @@ export const StatusSteps = (props: {
               : "finish",
         },
         {
-          title: "Instalando",
+          title:
+            status > SoftwareReleaseInterationStatus.IN_PROGRESS
+              ? "Instalado"
+              : "Instalando",
           icon: status == SoftwareReleaseInterationStatus.INSTALING && (
             <LoadingOutlined />
           ),
@@ -43,7 +61,13 @@ export const StatusSteps = (props: {
               : "wait",
         },
         {
-          title: hasFailed ? "Falhou" : hasSucceded ? "Sucesso" : "Concluir",
+          title: hasFailed
+            ? wasCanceled
+              ? "Cancelado"
+              : "Falhou"
+            : hasSucceded
+            ? "Sucesso"
+            : "Confirmado",
           status:
             status == SoftwareReleaseInterationStatus.SUCCESS
               ? "finish"

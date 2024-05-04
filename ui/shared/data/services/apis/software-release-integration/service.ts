@@ -49,6 +49,22 @@ export class SoftwareReleaseIntegrationService {
 
     return response.body;
   }
+
+  async delete(
+    integrationId: string
+  ): Promise<void> {
+
+    const response = await this.httpClient.request({
+      url: `/software-release-integrations/${integrationId}`,
+      method: "DELETE",
+    });
+
+    if (response.statusCode > 204) {
+      throw new Error(response.body.message || "Invalid");
+    }
+
+    return response.body;
+  }
 }
 
 export default SoftwareReleaseIntegrationService;

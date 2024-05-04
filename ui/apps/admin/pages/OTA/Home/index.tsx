@@ -1,5 +1,5 @@
 import PageScaffold from "@ui/shared/layouts/PageScaffold";
-import React from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { SoftwareReleaseIntegrationTable } from "../components/software-release-integration-table";
 import { Button, Flex, Tabs, TabsProps } from "antd";
 import { Link } from "react-router-dom";
@@ -7,40 +7,95 @@ import { PAGES_MANIFEST } from "../..";
 import LoadingOverflow from "@ui/shared/layouts/components/LoadingOverflow";
 import { useLoadSoftwareReleaseIntegrations } from "@ui/shared/hooks/useLoadSoftwareReleaseIntegrations";
 import { StationsTable } from "../components/stations-table";
+import { useLoadStations } from "@ui/shared/hooks/useLoadStations";
+import { MakeSoftwareReleaseIntegrationService } from "@ui/shared/data/factory";
+import { SoftwareReleaseIntegration } from "@ui/shared/domain/entities/SoftwareReleaseIntegration";
 
 export const OtaPage = () => {
+  const softwareReleaseIntegrationService = useMemo(
+    () => MakeSoftwareReleaseIntegrationService(),
+    []
+  );
   // -- States
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const { stations, isLoading: isLoadingStations } = useLoadStations({});
   const {
     softwareReleaseIntegrations,
-    isLoading,
-    handleCancelOtaUpdate,
-    stations,
+    isLoading: isLoadingIntegration,
+    loadData,
   } = useLoadSoftwareReleaseIntegrations({});
 
-    const items: TabsProps["items"] = [
-      
-      {
-        key: "1",
-        label: "Integrações",
-        children: (
-          <SoftwareReleaseIntegrationTable
-            list={softwareReleaseIntegrations}
-            onActionPress={(item) => handleCancelOtaUpdate(item.id)}
-          />
-        ),
-      },
+  const isLoading = isLoadingIntegration || isLoadingStations;
 
-      {
-        key: "2",
-        label: "Estações",
-        children: (
-          <StationsTable
-            list={stations}
-            onActionPress={(item) => null}
-          />
-        ),
-      },
-    ];
+  const isThereInProgress = useMemo(() => {
+    const some = (softwareReleaseIntegrations ?? []).some((s) => s.status < 3);
+    return !!some;
+  }, [softwareReleaseIntegrations]);
+
+  useEffect(() => {
+    if (!loadData || !isThereInProgress) return;
+
+    const refreshInterval = setInterval(() => {
+      loadData();
+    }, 5000);
+
+    return () => {
+      clearInterval(refreshInterval);
+    };
+  }, [loadData, isThereInProgress]);
+
+
+  const handleCancelOtaUpdate = async (id: string) => {
+    try {
+      setIsSubmitting(true);
+      await softwareReleaseIntegrationService.cancelOtaUpdate(id);
+      loadData();
+    } catch (error: unknown) {
+      console.log("useLoadSoftwareReleaseIntegrations: failed", { error });
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleDeleteIntegration = async (id: string) => {
+    try {
+      setIsSubmitting(true);
+      await softwareReleaseIntegrationService.delete(id);
+      loadData();
+    } catch (error: unknown) {
+      console.log("useLoadSoftwareReleaseIntegrations: failed", { error });
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleAction = (action: string, item: SoftwareReleaseIntegration) => {
+    if (action === "delete") {
+      handleDeleteIntegration(item.id);
+    } else {
+      handleCancelOtaUpdate(item.id);
+    }
+  };
+
+  const items: TabsProps["items"] = [
+    {
+      key: "1",
+      label: "Integrações",
+      children: (
+        <SoftwareReleaseIntegrationTable
+          list={softwareReleaseIntegrations}
+          onActionPress={handleAction}
+        />
+      ),
+    },
+
+    {
+      key: "2",
+      label: "Estações",
+      children: (
+        <StationsTable list={stations} onActionPress={(item) => null} />
+      ),
+    },
+  ];
 
   return (
     <PageScaffold
@@ -64,16 +119,10 @@ export const OtaPage = () => {
         </Flex>
       }
     >
-      {isLoading ? (
+      {isLoading && (softwareReleaseIntegrations ?? []).length == 0 ? (
         <LoadingOverflow />
       ) : (
-
-        <Tabs
-          defaultActiveKey="1"
-          type="card"
-          size={'small'}
-          items={items}
-        />
+        <Tabs defaultActiveKey="1" type="card" size={"small"} items={items} />
       )}
     </PageScaffold>
   );

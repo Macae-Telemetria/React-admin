@@ -6,7 +6,7 @@ import {
   SoftwareReleaseIntegration,
   SoftwareReleaseInterationStatus,
 } from "@ui/shared/domain/entities/SoftwareReleaseIntegration";
-import { CloseCircleFilled } from "@ant-design/icons";
+import { CloseCircleFilled, DeleteOutlined } from "@ant-design/icons";
 import { StatusSteps } from "@ui/shared/components/StatusSteps";
 
 export type SoftwareReleaseIntegrationTableProps = {
@@ -49,7 +49,7 @@ export function SoftwareReleaseIntegrationTable({
     },
     {
       title: "",
-      key: "action",
+      key: "cancel",
       render: (_: any, item) => (
         <>
           <Button
@@ -63,8 +63,33 @@ export function SoftwareReleaseIntegrationTable({
               justifyContent: "center",
             }}
             disabled={item.status >= SoftwareReleaseInterationStatus.CANCELLED}
-            onClick={() => onActionPress(item)}
+            onClick={() => onActionPress(`cancel`,item)}
             icon={<CloseCircleFilled />}
+          />
+        </>
+      ),
+      width: 32,
+      align: "center",
+    },
+
+    {
+      title: "",
+      key: "delete",
+      render: (_: any, item) => (
+        <>
+          <Button
+            danger
+            type="default"
+            style={{
+              width: "32",
+              height: 36,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+            disabled={item.status < SoftwareReleaseInterationStatus.CANCELLED}
+            onClick={() => onActionPress('delete',item)}
+            icon={<DeleteOutlined />}
           />
         </>
       ),

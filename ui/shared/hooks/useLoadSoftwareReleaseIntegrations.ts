@@ -1,17 +1,19 @@
-
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { MakeSoftwareReleaseIntegrationService, MakeSoftwareReleaseService } from "../data/factory";
-import { useLoadStations } from "./useLoadStations";
+import {
+  MakeSoftwareReleaseIntegrationService,
+} from "../data/factory";
 
-export const useLoadSoftwareReleaseIntegrations = ({ enabled = true }: { enabled?: boolean }) => {
+export const useLoadSoftwareReleaseIntegrations = ({
+  enabled = true,
+}: {
+  enabled?: boolean;
+}) => {
   const softwareReleaseIntegrationService = useMemo(
     () => MakeSoftwareReleaseIntegrationService(),
     []
   );
   const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState([]);
-
-  const { stations, isLoading: isLoadingStations} = useLoadStations({});
 
   const loadData = useCallback(async () => {
     try {
@@ -26,16 +28,6 @@ export const useLoadSoftwareReleaseIntegrations = ({ enabled = true }: { enabled
   }, [softwareReleaseIntegrationService, setData]);
 
 
-  const handleCancelOtaUpdate = async (id: string) => {
-    try {
-      setIsLoading(true);
-      await softwareReleaseIntegrationService.cancelOtaUpdate(id);
-      loadData();
-    } catch (error: unknown) {
-      console.log("useLoadSoftwareReleaseIntegrations: failed", { error });
-      setIsLoading(false);
-    }
-  };
 
   useEffect(() => {
     if (!loadData || !enabled) return;
@@ -44,8 +36,7 @@ export const useLoadSoftwareReleaseIntegrations = ({ enabled = true }: { enabled
 
   return {
     softwareReleaseIntegrations: data,
-    isLoading: isLoading || isLoadingStations,
-    stations,
-    handleCancelOtaUpdate,
+    isLoading,
+    loadData
   };
 };

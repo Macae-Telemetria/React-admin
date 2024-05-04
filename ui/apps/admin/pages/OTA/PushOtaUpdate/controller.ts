@@ -62,19 +62,14 @@ export const usePushOtaUpdateController = () => {
         stationId: Number(data.station.value),
         version: data.version.value,
       });
-
-      alert("Feito.")
       navigate(`${PAGES_MANIFEST.Ota.path}`);
-
     } catch(error){
       alert(
         "Não foi possível prosseguir. Verifique se já não existe uma integração em progresso. Cancele para iniciar uma nova."
       );
     } finally {
       setIsPushing(false);
-
     }
- 
   };
 
   return {

@@ -1,4 +1,5 @@
 export enum SoftwareReleaseInterationStatus {
+  PENDING = 0,
   IN_PROGRESS = 1,
   INSTALING = 2,
   CANCELLED = 3,
